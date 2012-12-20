@@ -8,6 +8,14 @@ import scipy.stats.kde
 import matplotlib.pyplot as pp
 import bisect
 
+
+# apparently scipy.weave is depricated. I really shouldn't have used it.
+# the best thing would probably be to port entropy_nn() -- or at least
+# the routine that's in weave -- to cython. The other methods are straight
+# numpy, so they're not going to achieve any speedup in cython.
+
+
+
 EULER_MASCHERONI = 0.57721566490153286060651209008240243104215933593992
 
 """
@@ -66,6 +74,8 @@ def entropy_bin(data, width):
     counts, bins = np.histogram(data, bins)
     p = counts / np.sum(counts)
     
+    # ignore zero entries, and we can't forget to apply the analytic correction
+    # for the bin width!
     entropy = -np.sum(np.compress(p != 0, p*(np.log(p) - np.log(bin_widths))))
     
     return entropy
