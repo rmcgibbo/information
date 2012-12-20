@@ -63,6 +63,7 @@ def entropy_ke(data):
     absolutely continuous distributions (Corresp.)," IEEE Trans. Inf. Theory,
     22 375 (1976)
     """
+    pass
 
 def entropy_nn(data, presorted=False):
     """Estimate the entropy of a continuous 1D signal using the distribution
@@ -189,6 +190,12 @@ def entropy_ci(data, radius, est_max_neighbors_within_radius=16):
 
 
 def main():
+    """Generate some random samples and compare the entropy estimators. This will make some plots.
+    
+    The idea is to run M trials where we generate N points and calculate their entropy. Then we plot,
+    for each estimator, the empirical distribution of the estimates over the M trials.
+    """
+    
     n_trials = 100
     n_pts = 10000
     bin_entropies_01, nn_entropies, cgi_entropies_01 = [], [], []
@@ -231,6 +238,8 @@ def main():
 
 
 def plot_gkde(data, *args, **kwargs):
+    """Plot a gaussia kernel density estimator. *args and **kwargs will be passed
+    directory to pyplot.plot()"""
     kde = scipy.stats.gaussian_kde(data)
     lower = np.mean(data) - 3*np.std(data)
     upper = np.mean(data) + 3*np.std(data)
