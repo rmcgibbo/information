@@ -37,7 +37,19 @@ kernel.
 def entropy_bin(data, width):
     """Entropy of a 1D signal by binning
     
-    Data beyond three standard deviations from the mean is discarded
+    Data beyond three standard deviations from the mean is discarded.
+    
+    Parameters
+    ----------
+    data : array_like
+        The data, a 1D sample of samples of a random variable.
+    width : float
+        The bin width of the histogram.
+        
+    Returns
+    -------
+    h : float
+        The estimated entropy
     
     .. [4] Moddemeijer, R. "On estimation of entropy and mutual information of continuous distributions",
            Signal Processing 16 233 (1989)
