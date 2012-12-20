@@ -29,6 +29,9 @@ nearest neighbor estimator has the lowest bias, but the highest variance. The
 correlation integral estimator is probably the best, especially with a well
 chosen neighbor radius. The histogram methods tends to underestimate the entropy.
 
+I suspect a kernel density estimator using a gaussian kernel would be even better,
+but that is not implemented. The entropy_ci() estimator uses basically a square
+kernel.
 """
 
 def entropy_bin(data, width):
