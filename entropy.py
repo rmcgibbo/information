@@ -11,8 +11,9 @@ import bisect
 
 # apparently scipy.weave is depricated. I really shouldn't have used it.
 # the best thing would probably be to port entropy_nn() -- or at least
-# the routine that's in weave -- to cython. The other methods are straight
-# numpy, so they're not going to achieve any speedup in cython.
+# the subroutineroutine that's in weave -- to cython. The other methods
+# are basically pure numpy, so they're not going to achieve any speedup
+# in cython.
 
 
 
